@@ -1,0 +1,33 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.app__scene {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.app__phrase {
+  display: flex;
+}
+
+.app__item {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  text-align: center;
+  font-size: 24px;
+  font-family: Roboto, Arial;
+  font-weight: 700;
+  margin: 5px;
+  user-select: none;
+  cursor: pointer;
+  transform: rotate(10deg);
+  box-shadow: 0 1px 0 #000;
+}
