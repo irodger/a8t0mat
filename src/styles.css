@@ -1,17 +1,35 @@
+body {
+  margin: 0;
+}
+
 .App {
-  font-family: sans-serif;
+  font-family: Roboto, Verdana, sans-serif;
   text-align: center;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .app__scene {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-content: center;
+  place-items: center;
+  background-image: url("https://i.pinimg.com/474x/a9/93/ea/a993ea23d2d04c306f0c08521928356b.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: 100%;
+  padding: 20px;
 }
 
-.app__phrase {
-  display: flex;
+@media (max-width: 520px) {
+  .app__scene {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    grid-template-rows: 100px;
+  }
 }
 
 .app__item {
@@ -22,7 +40,7 @@
   place-items: center;
   place-content: center;
   text-align: center;
-  font-size: 24px;
+  font-size: 32px;
   font-family: Roboto, Arial;
   font-weight: 700;
   margin: 5px;
