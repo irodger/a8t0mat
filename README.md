@@ -1,2 +1,6 @@
 # a8t0mat
-Created with CodeSandbox
+
+Anti-stress activity
+Russian profanity-o-fun device
+
+[Try it](https://3uj8k.csb.app/)
