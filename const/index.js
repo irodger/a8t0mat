@@ -46,7 +46,7 @@ export const mat = [
   },
   {
     id: 9,
-    word: "ну как??",
+    word: "ну какого хуя??",
     points: 10
   }
 ];

@@ -12,7 +12,7 @@ body {
 .app__scene {
   display: grid;
   gap: 40px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   place-content: center;
   place-items: center;
@@ -24,6 +24,11 @@ body {
   padding: 20px;
 }
 
+@media (max-width: 720px) {
+  .app__scene {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 @media (max-width: 520px) {
   .app__scene {
     grid-template-columns: 1fr 1fr;

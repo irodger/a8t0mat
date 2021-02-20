@@ -14,7 +14,6 @@ import {
   Chip,
   Avatar
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import { mat, ubludok, weHas } from "/const";
 
 let stressed = false;
@@ -27,17 +26,6 @@ const progressPoints = {
   third: 500,
   forth: 1000
 };
-
-const useStyles = makeStyles((theme) => ({
-  fab: {
-    margin: theme.spacing(2)
-  },
-  absolute: {
-    position: "absolute",
-    bottom: theme.spacing(2),
-    right: theme.spacing(3)
-  }
-}));
 
 const synth = window.speechSynthesis;
 const say = (msg, isWiating) => {
@@ -77,10 +65,6 @@ export default function App() {
   }, [score]);
 
   const readThis = () => {
-    if (score >= progressPoints.first && score < progressPoints.second) {
-      say("Ебаать, да у вас стресс!");
-    }
-
     if (score === progressPoints.second) {
       say(ubludok, true);
     }
@@ -97,19 +81,25 @@ export default function App() {
       say(items.join(), true);
     }
 
-    setDiagnos(
-      score === 0
-        ? ""
-        : score < 50
-        ? "Ну-ну, иди поработай еще, даже считай и не устал"
-        : score < 100
-        ? "Вам бы отдохнуть, выходных без работы должно хватить"
-        : score < 200
-        ? "Ебать, да у вас стресс! Нужен отпуск (не дома)"
-        : score < 500
-        ? "Пожалуйста, отложите все и отдохните, лучше прямо сейчас. Я серьезно!"
-        : "Вам уже ничего не поможет. Вы выгорели. Нужно кардинально менять деятельность (так говорят)"
-    );
+    setDiagnos(() => {
+      const dia =
+        score === 0
+          ? ""
+          : score < 50
+          ? " Ну-ну, иди поработай еще, даже считай и не устал"
+          : score < 100
+          ? "Вам бы отдохнуть, выходных без работы должно хватить"
+          : score < 200
+          ? "Ебать, да у вас стресс! Нужен отпуск (не дома)"
+          : score < 500
+          ? "Пожалуйста, отложите все и отдохните, лучше прямо сейчас. Я серьезно!"
+          : "Вам уже ничего не поможет. Вы выгорели. Нужно кардинально менять деятельность (так говорят)";
+
+      score &&
+        say(score >= 50 ? "А теперь мы узнаем ваш диагноз." : "" + dia, true);
+
+      return dia;
+    });
 
     addRecord((state) => [...state, score]);
     setScore(0);
@@ -136,7 +126,6 @@ export default function App() {
     }
     setCustomWord("");
   };
-  const classes = useStyles();
 
   return (
     <div className="App">
@@ -207,7 +196,7 @@ export default function App() {
           />
         </div>
         <Tooltip title="Добавить слово" aria-label="add">
-          <Fab color="primary" onClick={addCustomToAll} className={classes.fab}>
+          <Fab color="primary" onClick={addCustomToAll}>
             <Add />
           </Fab>
         </Tooltip>
