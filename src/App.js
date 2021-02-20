@@ -60,7 +60,7 @@ export default function App() {
   useEffect(() => {
     if (score > 99 && !stressed) {
       stressed = true;
-      say("Ого, сестра, даа это же стресс!");
+      say("Ого, даа это же стресс!");
     }
   }, [score]);
 
@@ -96,7 +96,10 @@ export default function App() {
           : "Вам уже ничего не поможет. Вы выгорели. Нужно кардинально менять деятельность (так говорят)";
 
       score &&
-        say(score >= 50 ? "А теперь мы узнаем ваш диагноз." : "" + dia, true);
+        say(
+          (score >= 50 ? "А теперь мы узнаем ваш диагноз..." : "") + dia,
+          true
+        );
 
       return dia;
     });
