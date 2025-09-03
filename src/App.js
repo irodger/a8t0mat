@@ -27,7 +27,7 @@ const progressPoints = {
   forth: 1000
 };
 
-const synth = window.speechSynthesis;
+const synth = window.speechSynthesis || {};
 const say = (msg, isWaiting) => {
   if (!isWaiting) {
     synth.cancel();
