@@ -54,7 +54,7 @@ export default function App() {
   const [diagnos, setDiagnos] = useState("");
   const [items, addItem] = useState([]);
   const [score, setScore] = useState(0);
-  const [records, addRecord] = useState(getRec());
+  const [records, addRecord] = useState(getRec() || []);
   const [customWord, setCustomWord] = useState("");
 
   useEffect(() => {
