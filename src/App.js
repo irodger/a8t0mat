@@ -27,15 +27,19 @@ const progressPoints = {
   forth: 1000
 };
 
-const synth = window.speechSynthesis || {};
+const synth = window.speechSynthesis;
 const say = (msg, isWaiting) => {
+  if (!synth) return;
+
   if (!isWaiting) {
     synth.cancel();
   }
 
   synth.speak(new SpeechSynthesisUtterance(msg));
 };
+
 const stopSpeak = () => {
+  if (!synth) return;
   synth.cancel();
 };
 
@@ -46,6 +50,7 @@ const setRec = (arr) => {
 
   localStorage.setItem("mat_leaderboard", JSON.stringify(arr));
 };
+
 const getRec = () => JSON.parse(localStorage.getItem("mat_leaderboard"));
 // const cleanRec = () => localStorage.removeItem("mat_leaderboard");
 
